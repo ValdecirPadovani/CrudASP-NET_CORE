@@ -35,6 +35,8 @@ namespace CrudASP_NET_CORE
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
+            services.AddApiVersioning();
+
             //Injessao de dependencia
             services.AddScoped<IPersonService, PersonServiceImpl>();
         }
