@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using CrudASP_NET_CORE.Controllers.Model;
+using CrudASP_NET_CORE.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CrudASP_NET_CORE.Controllers
@@ -7,36 +9,49 @@ namespace CrudASP_NET_CORE.Controllers
     [ApiController]
     public class PersonsController : ControllerBase
     {
+
+        private IPersonService _ipersonService;
+
+        public PersonsController(IPersonService ipersonService) => _ipersonService = ipersonService;
+
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public ActionResult Get()
         {
-            return new string[] { "value1", "value2" };
+            return Ok(_ipersonService.FindAll());
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        public ActionResult Get(int id)
         {
-            return "value";
+            var person = _ipersonService.FindByI(id);
+            if (person == null) return NotFound();
+            return Ok(person);
         }
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody] string value)
+        public ActionResult Post([FromBody] Person person)
         {
+            if (person == null) return BadRequest();
+            return new ObjectResult(_ipersonService.Create(person));
         }
 
         // PUT api/values/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public ActionResult Put([FromBody] Person person)
         {
+            if (person == null) return BadRequest();
+            return new ObjectResult(_ipersonService.Update(person));
         }
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public ActionResult Delete(int id)
         {
+            _ipersonService.Delete(id);
+            return NoContent();
         }
     }
 }

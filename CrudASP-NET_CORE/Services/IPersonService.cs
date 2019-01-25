@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace CrudASP_NET_CORE.Services
 {
-    interface IPersonService
+    public interface IPersonService
     {
         Person Create(Person person);
         Person FindByI(long id);
