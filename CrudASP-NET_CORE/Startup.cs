@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CrudASP_NET_CORE.Controllers.Model.Context;
-using CrudASP_NET_CORE.Services;
-using CrudASP_NET_CORE.Services.Implementations;
+using CrudASP_NET_CORE.Buseness;
+using CrudASP_NET_CORE.Buseness.Implementations;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -14,6 +14,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using CrudASP_NET_CORE.Repository;
+using CrudASP_NET_CORE.Repository.Implementations;
 
 namespace CrudASP_NET_CORE
 {
@@ -38,7 +40,8 @@ namespace CrudASP_NET_CORE
             services.AddApiVersioning();
 
             //Injessao de dependencia
-            services.AddScoped<IPersonService, PersonServiceImpl>();
+            services.AddScoped<IPersonBuseness, PersonBusenessImpl>();
+            services.AddScoped<IPersonRepository, PersonRepositoryImpl>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

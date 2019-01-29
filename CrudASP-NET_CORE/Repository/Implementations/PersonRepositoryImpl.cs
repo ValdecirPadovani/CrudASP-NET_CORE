@@ -4,15 +4,16 @@ using System.Linq;
 using System.Threading;
 using CrudASP_NET_CORE.Controllers.Model;
 using CrudASP_NET_CORE.Controllers.Model.Context;
+using CrudASP_NET_CORE.Repository;
 
-namespace CrudASP_NET_CORE.Services.Implementations
+namespace CrudASP_NET_CORE.Repository.Implementations
 {
-    public class PersonServiceImpl : IPersonService
+    public class PersonRepositoryImpl : IPersonRepository
     {
 
         private MySQLContext _context;
 
-        public PersonServiceImpl(MySQLContext context)
+        public PersonRepositoryImpl(MySQLContext context)
         {
             _context = context;
         }
@@ -72,7 +73,7 @@ namespace CrudASP_NET_CORE.Services.Implementations
             return person;
         }
 
-        private bool Exist(long? id)
+        public bool Exist(long? id)
         {
             return _context.Persons.Any(p => p.Id.Equals(id));
         }

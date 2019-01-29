@@ -1,9 +1,9 @@
 ﻿using CrudASP_NET_CORE.Controllers.Model;
 using System.Collections.Generic;
 
-namespace CrudASP_NET_CORE.Services
+namespace CrudASP_NET_CORE.Buseness
 {
-    public interface IPersonService
+    public interface IPersonBuseness
     {
         Person Create(Person person);
         Person FindByI(long id);

@@ -1,33 +1,32 @@
 ﻿using System.Collections.Generic;
 using CrudASP_NET_CORE.Controllers.Model;
-using CrudASP_NET_CORE.Services;
+using CrudASP_NET_CORE.Buseness;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CrudASP_NET_CORE.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
     [ApiVersion("1.0")]
     [Route("api/[controller]/v{version:apiVersion}")]
     public class PersonsController : ControllerBase
     {
 
-        private IPersonService _ipersonService;
+        private IPersonBuseness _ipersonBuseness;
 
-        public PersonsController(IPersonService ipersonService) => _ipersonService = ipersonService;
+        public PersonsController(IPersonBuseness ipersonBuseness) => _ipersonBuseness = ipersonBuseness;
 
         // GET api/values
         [HttpGet]
         public ActionResult Get()
         {
-            return Ok(_ipersonService.FindAll());
+            return Ok(_ipersonBuseness.FindAll());
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
         public ActionResult Get(int id)
         {
-            var person = _ipersonService.FindByI(id);
+            var person = _ipersonBuseness.FindByI(id);
             if (person == null) return NotFound();
             return Ok(person);
         }
@@ -37,7 +36,7 @@ namespace CrudASP_NET_CORE.Controllers
         public ActionResult Post([FromBody] Person person)
         {
             if (person == null) return BadRequest();
-            return new ObjectResult(_ipersonService.Create(person));
+            return new ObjectResult(_ipersonBuseness.Create(person));
         }
 
         // PUT api/values/5
@@ -45,14 +44,14 @@ namespace CrudASP_NET_CORE.Controllers
         public ActionResult Put([FromBody] Person person)
         {
             if (person == null) return BadRequest();
-            return new ObjectResult(_ipersonService.Update(person));
+            return new ObjectResult(_ipersonBuseness.Update(person));
         }
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
         public ActionResult Delete(int id)
         {
-            _ipersonService.Delete(id);
+            _ipersonBuseness.Delete(id);
             return NoContent();
         }
     }
