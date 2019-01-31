@@ -58,7 +58,8 @@ namespace CrudASP_NET_CORE.Repository.Implementations
 
         public Person Update(Person person)
         {
-            if (!Exist(person.Id)) return new Person();
+            if (!Exist(person.Id)) return null;
+
             var result = _context.Persons.SingleOrDefault(p => p.Id.Equals(person.Id));
             try
             {

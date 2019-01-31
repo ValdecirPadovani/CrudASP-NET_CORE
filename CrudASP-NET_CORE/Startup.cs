@@ -21,19 +21,43 @@ namespace CrudASP_NET_CORE
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
+        private readonly ILogger _logger;
+        public IConfiguration _configuration { get; }
+        public IHostingEnvironment _iHostingEnvironment { get; }
 
-        public IConfiguration Configuration { get; }
+        public Startup(IConfiguration configuration, IHostingEnvironment iHostingEnvironment, ILogger<Startup> logger)
+        {
+            _configuration = configuration;
+            _logger = logger;
+            _iHostingEnvironment = iHostingEnvironment;
+        }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
 
-            var connection = Configuration["MySqlConnection:MysqlConnectionString"];
-            services.AddDbContext<MySQLContext>(options => options.UseMySql(connection));
+            var connectionString = _configuration["MySqlConnection:MysqlConnectionString"];
+            services.AddDbContext<MySQLContext>(options => options.UseMySql(connectionString));
+
+            if (_iHostingEnvironment.IsDevelopment())
+            {
+                try
+                {
+                    var evolveConnection = new MySql.Data.MySqlClient.MySqlConnection(connectionString);
+                    var evolve = new Evolve.Evolve("evolve.json", evolveConnection, msg => _logger.LogInformation(msg))
+                    {
+                        Locations = new List<String> { "db/migrations" },
+                        IsEraseDisabled = true,
+                    };
+                    evolve.Migrate();
+                }
+                catch(Exception ex)
+                {
+                    _logger.LogCritical("Database migration failed.", ex);
+                    throw;
+                }
+
+            }
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 

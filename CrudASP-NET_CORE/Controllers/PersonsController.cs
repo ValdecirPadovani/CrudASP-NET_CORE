@@ -44,6 +44,8 @@ namespace CrudASP_NET_CORE.Controllers
         public ActionResult Put([FromBody] Person person)
         {
             if (person == null) return BadRequest();
+            var updatePerson = _ipersonBuseness.Update(person);
+            if (updatePerson == null) return NoContent();
             return new ObjectResult(_ipersonBuseness.Update(person));
         }
 
