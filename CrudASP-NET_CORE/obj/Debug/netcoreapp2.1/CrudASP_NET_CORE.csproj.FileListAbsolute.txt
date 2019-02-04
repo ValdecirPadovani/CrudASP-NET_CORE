@@ -3,7 +3,6 @@ C:\Projeto\RestWithASP-NET\CrudASP-NET_CORE\CrudASP-NET_CORE\CrudASP-NET_CORE\bi
 C:\Projeto\RestWithASP-NET\CrudASP-NET_CORE\CrudASP-NET_CORE\CrudASP-NET_CORE\bin\Debug\netcoreapp2.1\CrudASP_NET_CORE.runtimeconfig.dev.json
 C:\Projeto\RestWithASP-NET\CrudASP-NET_CORE\CrudASP-NET_CORE\CrudASP-NET_CORE\bin\Debug\netcoreapp2.1\CrudASP_NET_CORE.dll
 C:\Projeto\RestWithASP-NET\CrudASP-NET_CORE\CrudASP-NET_CORE\CrudASP-NET_CORE\bin\Debug\netcoreapp2.1\CrudASP_NET_CORE.pdb
-C:\Projeto\RestWithASP-NET\CrudASP-NET_CORE\CrudASP-NET_CORE\CrudASP-NET_CORE\obj\Debug\netcoreapp2.1\CrudASP_NET_CORE.csprojAssemblyReference.cache
 C:\Projeto\RestWithASP-NET\CrudASP-NET_CORE\CrudASP-NET_CORE\CrudASP-NET_CORE\obj\Debug\netcoreapp2.1\CrudASP_NET_CORE.csproj.CoreCompileInputs.cache
 C:\Projeto\RestWithASP-NET\CrudASP-NET_CORE\CrudASP-NET_CORE\CrudASP-NET_CORE\obj\Debug\netcoreapp2.1\CrudASP_NET_CORE.RazorAssemblyInfo.cache
 C:\Projeto\RestWithASP-NET\CrudASP-NET_CORE\CrudASP-NET_CORE\CrudASP-NET_CORE\obj\Debug\netcoreapp2.1\CrudASP_NET_CORE.RazorAssemblyInfo.cs
@@ -12,3 +11,4 @@ C:\Projeto\RestWithASP-NET\CrudASP-NET_CORE\CrudASP-NET_CORE\CrudASP-NET_CORE\ob
 C:\Projeto\RestWithASP-NET\CrudASP-NET_CORE\CrudASP-NET_CORE\CrudASP-NET_CORE\obj\Debug\netcoreapp2.1\CrudASP_NET_CORE.RazorTargetAssemblyInfo.cache
 C:\Projeto\RestWithASP-NET\CrudASP-NET_CORE\CrudASP-NET_CORE\CrudASP-NET_CORE\obj\Debug\netcoreapp2.1\CrudASP_NET_CORE.dll
 C:\Projeto\RestWithASP-NET\CrudASP-NET_CORE\CrudASP-NET_CORE\CrudASP-NET_CORE\obj\Debug\netcoreapp2.1\CrudASP_NET_CORE.pdb
+C:\Projeto\RestWithASP-NET\CrudASP-NET_CORE\CrudASP-NET_CORE\CrudASP-NET_CORE\obj\Debug\netcoreapp2.1\CrudASP_NET_CORE.csprojAssemblyReference.cache

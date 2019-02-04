@@ -12,6 +12,5 @@ namespace CrudASP_NET_CORE.Repository
         void Delete(long id);
 
         bool Exist(long? id);
-
     }
 }
