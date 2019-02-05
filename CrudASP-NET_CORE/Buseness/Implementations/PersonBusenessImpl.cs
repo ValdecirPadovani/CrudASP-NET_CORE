@@ -5,15 +5,16 @@ using System.Threading;
 using CrudASP_NET_CORE.Controllers.Model;
 using CrudASP_NET_CORE.Controllers.Model.Context;
 using CrudASP_NET_CORE.Repository;
+using CrudASP_NET_CORE.Repository.Generic;
 
 namespace CrudASP_NET_CORE.Buseness.Implementations
 {
     public class PersonBusenessImpl : IPersonBuseness
     {
 
-        private IPersonRepository _repository;
+        private IRepository<Person> _repository;
 
-        public PersonBusenessImpl(IPersonRepository repository)
+        public PersonBusenessImpl(IRepository<Person> repository)
         {
             _repository = repository;
         }

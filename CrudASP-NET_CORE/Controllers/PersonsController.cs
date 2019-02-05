@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using CrudASP_NET_CORE.Controllers.Model;
+﻿using CrudASP_NET_CORE.Controllers.Model;
 using CrudASP_NET_CORE.Buseness;
 using Microsoft.AspNetCore.Mvc;
 
