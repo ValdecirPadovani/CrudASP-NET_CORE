@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
+using CrudASP_NET_CORE.Controllers.Data.Converters;
+using CrudASP_NET_CORE.Controllers.Data.VO;
 using CrudASP_NET_CORE.Controllers.Model;
 using CrudASP_NET_CORE.Controllers.Model.Context;
 using CrudASP_NET_CORE.Repository;
@@ -14,14 +16,19 @@ namespace CrudASP_NET_CORE.Buseness.Implementations
 
         private IRepository<Person> _repository;
 
+        private readonly PersonConverter _personConverters;
+
         public PersonBusenessImpl(IRepository<Person> repository)
         {
             _repository = repository;
+            _personConverters = new PersonConverter();
         }
 
-        public Person Create(Person person)
+        public PersonVO Create(PersonVO person)
         {
-            return _repository.Create(person);
+            var personEntity = _personConverters.Parse(person);
+            personEntity = _repository.Create(personEntity);
+            return _personConverters.Parse(personEntity);
         }
 
         public void Delete(long id)
@@ -29,19 +36,21 @@ namespace CrudASP_NET_CORE.Buseness.Implementations
             _repository.Delete(id);
         }
 
-        public List<Person> FindAll()
+        public List<PersonVO> FindAll()
         {
-            return _repository.FindAll();
+            return _personConverters.ParseList(_repository.FindAll());
         }
 
-        public Person FindByI(long id)
+        public PersonVO FindByI(long id)
         {
-            return _repository.FindByI(id);
+            return _personConverters.Parse(_repository.FindByI(id));
         }
 
-        public Person Update(Person person)
+        public PersonVO Update(PersonVO person)
         {
-            return _repository.Update(person);
+            var personEntity = _personConverters.Parse(person);
+            personEntity = _repository.Update(personEntity);
+            return _personConverters.Parse(personEntity);
         }
     }
 }

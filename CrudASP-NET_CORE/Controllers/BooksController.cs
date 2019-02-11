@@ -1,7 +1,6 @@
-﻿using CrudASP_NET_CORE.Controllers.Model;
-using CrudASP_NET_CORE.Buseness;
+﻿using CrudASP_NET_CORE.Buseness;
 using Microsoft.AspNetCore.Mvc;
-using CrudASP_NET_CORE.Model;
+using CrudASP_NET_CORE.Controllers.Data.VO;
 
 namespace CrudASP_NET_CORE.Controllers
 {
@@ -36,7 +35,7 @@ namespace CrudASP_NET_CORE.Controllers
 
         // POST api/values
         [HttpPost]
-        public ActionResult Post([FromBody] Book book)
+        public ActionResult Post([FromBody] BookVO book)
         {
             if (book == null) return BadRequest();
             return new ObjectResult(_bookBusenes.Create(book));
@@ -44,7 +43,7 @@ namespace CrudASP_NET_CORE.Controllers
 
         // PUT api/values/5
         [HttpPut("{id}")]
-        public ActionResult Put([FromBody] Book book)
+        public ActionResult Put([FromBody] BookVO book)
         {
             if (book == null) return BadRequest();
             var updateBook = _bookBusenes.Update(book);

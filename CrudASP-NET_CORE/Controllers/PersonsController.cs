@@ -1,6 +1,6 @@
-﻿using CrudASP_NET_CORE.Controllers.Model;
-using CrudASP_NET_CORE.Buseness;
+﻿using CrudASP_NET_CORE.Buseness;
 using Microsoft.AspNetCore.Mvc;
+using CrudASP_NET_CORE.Controllers.Data.VO;
 
 namespace CrudASP_NET_CORE.Controllers
 {
@@ -32,7 +32,7 @@ namespace CrudASP_NET_CORE.Controllers
 
         // POST api/values
         [HttpPost]
-        public ActionResult Post([FromBody] Person person)
+        public ActionResult Post([FromBody] PersonVO person)
         {
             if (person == null) return BadRequest();
             return new ObjectResult(_ipersonBuseness.Create(person));
@@ -40,7 +40,7 @@ namespace CrudASP_NET_CORE.Controllers
 
         // PUT api/values/5
         [HttpPut("{id}")]
-        public ActionResult Put([FromBody] Person person)
+        public ActionResult Put([FromBody] PersonVO person)
         {
             if (person == null) return BadRequest();
             var updatePerson = _ipersonBuseness.Update(person);
