@@ -26,6 +26,7 @@
         "dependencies": {
           "Evolve": "1.9.0",
           "Microsoft.AspNetCore.App": "2.1.1",
+          "Microsoft.AspNetCore.Mvc.Formatters.Xml": "2.1.1",
           "Microsoft.AspNetCore.Mvc.Versioning": "3.0.0",
           "Microsoft.AspNetCore.Razor.Design": "2.2.0",
           "Microsoft.NETCore.App": "2.1.0",

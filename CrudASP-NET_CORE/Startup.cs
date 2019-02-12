@@ -13,6 +13,7 @@ using Microsoft.Extensions.Logging;
 using CrudASP_NET_CORE.Repository;
 using CrudASP_NET_CORE.Repository.Implementations;
 using CrudASP_NET_CORE.Repository.Generic;
+using Microsoft.Net.Http.Headers;
 
 namespace CrudASP_NET_CORE
 {
@@ -56,7 +57,14 @@ namespace CrudASP_NET_CORE
 
             }
                 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc(options => {
+
+                options.RespectBrowserAcceptHeader = true;
+                options.FormatterMappings.SetMediaTypeMappingForFormat("xml", MediaTypeHeaderValue.Parse("text/xml"));
+                options.FormatterMappings.SetMediaTypeMappingForFormat("json", MediaTypeHeaderValue.Parse("application/json"));
+
+            })
+            .AddXmlSerializerFormatters();
 
             services.AddApiVersioning();
 

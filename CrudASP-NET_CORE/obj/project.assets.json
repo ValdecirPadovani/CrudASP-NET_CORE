@@ -12654,6 +12654,7 @@
     ".NETCoreApp,Version=v2.1": [
       "Evolve >= 1.9.0",
       "Microsoft.AspNetCore.App >= 2.1.1",
+      "Microsoft.AspNetCore.Mvc.Formatters.Xml >= 2.1.1",
       "Microsoft.AspNetCore.Mvc.Versioning >= 3.0.0",
       "Microsoft.AspNetCore.Razor.Design >= 2.2.0",
       "Microsoft.NETCore.App >= 2.1.0",
@@ -12711,6 +12712,10 @@
             "target": "Package",
             "version": "[2.1.1, )",
             "autoReferenced": true
+          },
+          "Microsoft.AspNetCore.Mvc.Formatters.Xml": {
+            "target": "Package",
+            "version": "[2.1.1, )"
           },
           "Microsoft.AspNetCore.Mvc.Versioning": {
             "target": "Package",
