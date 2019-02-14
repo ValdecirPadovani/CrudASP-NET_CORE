@@ -5,7 +5,6 @@ using CrudASP_NET_CORE.Buseness;
 using CrudASP_NET_CORE.Buseness.Implementations;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -14,6 +13,8 @@ using CrudASP_NET_CORE.Repository;
 using CrudASP_NET_CORE.Repository.Implementations;
 using CrudASP_NET_CORE.Repository.Generic;
 using Microsoft.Net.Http.Headers;
+using Tapioca.HATEOAS;
+using CrudASP_NET_CORE.Hypermedia;
 
 namespace CrudASP_NET_CORE
 {
@@ -66,6 +67,10 @@ namespace CrudASP_NET_CORE
             })
             .AddXmlSerializerFormatters();
 
+            var filerOptions = new HyperMediaFilterOptions();
+            filerOptions.ObjectContentResponseEnricherList.Add(new PersonEnricher());
+            services.AddSingleton(filerOptions);
+
             services.AddApiVersioning();
 
             //Injessao de dependencia
@@ -89,7 +94,9 @@ namespace CrudASP_NET_CORE
             }
 
             app.UseHttpsRedirection();
-            app.UseMvc();
+            app.UseMvc(routes => routes.MapRoute(
+                name: "DefaultApi",
+                template:"{controller=Values}/{id?}"));
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using CrudASP_NET_CORE.Buseness;
 using Microsoft.AspNetCore.Mvc;
 using CrudASP_NET_CORE.Controllers.Data.VO;
+using Tapioca.HATEOAS;
 
 namespace CrudASP_NET_CORE.Controllers
 {
@@ -16,6 +17,7 @@ namespace CrudASP_NET_CORE.Controllers
 
         // GET api/values
         [HttpGet]
+        [TypeFilter(typeof(HyperMediaFilter))]
         public ActionResult Get()
         {
             return Ok(_ipersonBuseness.FindAll());
@@ -40,6 +42,7 @@ namespace CrudASP_NET_CORE.Controllers
 
         // PUT api/values/5
         [HttpPut("{id}")]
+        [TypeFilter(typeof(HyperMediaFilter))]
         public ActionResult Put([FromBody] PersonVO person)
         {
             if (person == null) return BadRequest();
@@ -50,6 +53,7 @@ namespace CrudASP_NET_CORE.Controllers
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
+        [TypeFilter(typeof(HyperMediaFilter))]
         public ActionResult Delete(int id)
         {
             _ipersonBuseness.Delete(id);
