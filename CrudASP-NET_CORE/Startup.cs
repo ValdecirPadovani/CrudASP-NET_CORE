@@ -15,6 +15,8 @@ using CrudASP_NET_CORE.Repository.Generic;
 using Microsoft.Net.Http.Headers;
 using Tapioca.HATEOAS;
 using CrudASP_NET_CORE.Hypermedia;
+using Swashbuckle.AspNetCore.Swagger;
+using Microsoft.AspNetCore.Rewrite;
 
 namespace CrudASP_NET_CORE
 {
@@ -50,14 +52,14 @@ namespace CrudASP_NET_CORE
                     };
                     evolve.Migrate();
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     _logger.LogCritical("Database migration failed.", ex);
                     throw;
                 }
 
             }
-                
+
             services.AddMvc(options => {
 
                 options.RespectBrowserAcceptHeader = true;
@@ -71,7 +73,20 @@ namespace CrudASP_NET_CORE
             filerOptions.ObjectContentResponseEnricherList.Add(new PersonEnricher());
             services.AddSingleton(filerOptions);
 
-            services.AddApiVersioning();
+            services.AddApiVersioning(option => option.ReportApiVersions = true);
+
+            //<Aplicativo Swagger> ( Usado para documentação de API)
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc(
+                "v1",
+                new Info
+                {
+                    Title = "RESTFul API With ASP.NET Core 2.0",
+                    Version = "v1"
+                });
+            });
+            //<Aplicativo Swagger>
 
             //Injessao de dependencia
             services.AddScoped<IPersonBuseness, PersonBusenessImpl>();
@@ -94,6 +109,18 @@ namespace CrudASP_NET_CORE
             }
 
             app.UseHttpsRedirection();
+
+            //<Aplicativo Swagger>
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+            });
+
+            var option = new RewriteOptions();
+            option.AddRedirect("^$", "swagger");
+            app.UseRewriter(option);
+
             app.UseMvc(routes => routes.MapRoute(
                 name: "DefaultApi",
                 template:"{controller=Values}/{id?}"));
