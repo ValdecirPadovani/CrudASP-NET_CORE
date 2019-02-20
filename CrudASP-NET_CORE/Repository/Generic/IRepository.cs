@@ -1,8 +1,5 @@
 ﻿using CrudASP_NET_CORE.Model.Base;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace CrudASP_NET_CORE.Repository.Generic
 {

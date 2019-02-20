@@ -1,9 +1,5 @@
 ﻿using CrudASP_NET_CORE.Model;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace CrudASP_NET_CORE.Controllers.Model.Context
 {
@@ -16,7 +12,9 @@ namespace CrudASP_NET_CORE.Controllers.Model.Context
 
         public MySQLContext(DbContextOptions<MySQLContext> options) : base(options) { }
         
-        public DbSet<Person> Persons { get; set; }
-        public DbSet<Book> Books { get; set; }
+        public DbSet<Person> Persons    { get; set; }
+        public DbSet<Book> Books        { get; set; }
+        public DbSet<Users> Users       { get; set; } 
+
     }
 }

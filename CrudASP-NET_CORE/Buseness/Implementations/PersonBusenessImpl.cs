@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
+﻿using System.Collections.Generic;
 using CrudASP_NET_CORE.Controllers.Data.Converters;
 using CrudASP_NET_CORE.Controllers.Data.VO;
 using CrudASP_NET_CORE.Controllers.Model;
-using CrudASP_NET_CORE.Controllers.Model.Context;
-using CrudASP_NET_CORE.Repository;
 using CrudASP_NET_CORE.Repository.Generic;
 
 namespace CrudASP_NET_CORE.Buseness.Implementations

@@ -5,6 +5,7 @@ using Tapioca.HATEOAS;
 using System.Collections.Generic;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CrudASP_NET_CORE.Controllers
 {
@@ -25,6 +26,7 @@ namespace CrudASP_NET_CORE.Controllers
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         [ProducesResponseType(401)]
+        [Authorize("Bearer")]
         public ActionResult Get()
         {
             return Ok(_ipersonBuseness.FindAll());

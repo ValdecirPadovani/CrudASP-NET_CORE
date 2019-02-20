@@ -1,5 +1,4 @@
 ﻿using CrudASP_NET_CORE.Controllers.Data.VO;
-using CrudASP_NET_CORE.Model;
 using System.Collections.Generic;
 
 namespace CrudASP_NET_CORE.Buseness
