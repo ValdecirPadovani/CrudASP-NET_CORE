@@ -20,7 +20,5 @@ namespace CrudASP_NET_CORE.Security.Configuration
             }
             SigningCredentials = new SigningCredentials(key, SecurityAlgorithms.RsaSha256Signature);
         }
-
-
     }
 }

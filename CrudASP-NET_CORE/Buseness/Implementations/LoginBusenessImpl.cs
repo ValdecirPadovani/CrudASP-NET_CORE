@@ -27,7 +27,7 @@ namespace CrudASP_NET_CORE.Buseness.Implementations
         public Object FindByLogin(Users users)
         {
             bool credentialIsValid = false;
-            if(users != null && string.IsNullOrWhiteSpace(users.login))
+            if(users != null && !string.IsNullOrWhiteSpace(users.login))
             {
                 var baseUser = _repository.FindByLogin(users.login);
                 credentialIsValid = (baseUser != null & users.login == baseUser.login && users.AccessKey == baseUser.AccessKey);
@@ -35,7 +35,7 @@ namespace CrudASP_NET_CORE.Buseness.Implementations
             if(credentialIsValid)
             {
                 ClaimsIdentity identity = new ClaimsIdentity(
-                    new GenericIdentity(users.login, "Login"),
+                    new GenericIdentity(users.login, "login"),
                     new[]
                     {
                         new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString("N")),

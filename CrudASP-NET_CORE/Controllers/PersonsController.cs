@@ -38,6 +38,7 @@ namespace CrudASP_NET_CORE.Controllers
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         [ProducesResponseType(401)]
+        [Authorize("Bearer")]
         public ActionResult Get(int id)
         {
             var person = _ipersonBuseness.FindByI(id);
@@ -50,6 +51,7 @@ namespace CrudASP_NET_CORE.Controllers
         [ProducesResponseType((201), Type = typeof(List<PersonVO>))]
         [ProducesResponseType(400)]
         [ProducesResponseType(401)]
+        [Authorize("Bearer")]
         [TypeFilter(typeof(HyperMediaFilter))]
         public ActionResult Post([FromBody] PersonVO person)
         {
@@ -62,6 +64,7 @@ namespace CrudASP_NET_CORE.Controllers
         [ProducesResponseType((202), Type = typeof(PersonVO))]
         [ProducesResponseType(400)]
         [ProducesResponseType(401)]
+        [Authorize("Bearer")]
         [TypeFilter(typeof(HyperMediaFilter))]
         public ActionResult Put([FromBody] PersonVO person)
         {
@@ -76,6 +79,7 @@ namespace CrudASP_NET_CORE.Controllers
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         [ProducesResponseType(401)]
+        [Authorize("Bearer")]
         [TypeFilter(typeof(HyperMediaFilter))]
         public ActionResult Delete(int id)
         {

@@ -19,6 +19,8 @@ using CrudASP_NET_CORE.Security.Configuration;
 using Microsoft.Extensions.Options;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
+using CrudASP_NET_CORE.Repository;
+using CrudASP_NET_CORE.Repository.Implementations;
 
 namespace CrudASP_NET_CORE
 {
@@ -118,6 +120,9 @@ namespace CrudASP_NET_CORE
             //Injessao de dependencia
             services.AddScoped<IPersonBuseness, PersonBusenessImpl>();
             services.AddScoped<IBookBuseness, BookBusenessImpl>();
+            services.AddScoped<ILoginBuseness, LoginBusenessImpl>();
+
+            services.AddScoped<IUserRepository, UserRepositoryImpl>();
 
             services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
         }
