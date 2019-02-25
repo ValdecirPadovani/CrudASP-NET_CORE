@@ -8,6 +8,7 @@ namespace CrudASP_NET_CORE.Buseness
         PersonVO Create(PersonVO personVO);
         PersonVO FindByI(long id);
         List<PersonVO> FindAll();
+        List<PersonVO> FindByName(string nome, string sobreNome);
         PersonVO Update(PersonVO person);
         void Delete(long id);
     }

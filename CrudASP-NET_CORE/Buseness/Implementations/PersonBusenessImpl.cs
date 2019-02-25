@@ -47,5 +47,10 @@ namespace CrudASP_NET_CORE.Buseness.Implementations
             personEntity = _repository.Update(personEntity);
             return _personConverters.Parse(personEntity);
         }
+
+        public List<PersonVO> FindByName(string nome, string sobreNome)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

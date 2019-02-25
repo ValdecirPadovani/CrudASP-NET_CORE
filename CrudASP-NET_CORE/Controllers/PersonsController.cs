@@ -32,6 +32,19 @@ namespace CrudASP_NET_CORE.Controllers
             return Ok(_ipersonBuseness.FindAll());
         }
 
+        // GET api/values
+        [HttpGet("find-by-name")]
+        [TypeFilter(typeof(HyperMediaFilter))]
+        [ProducesResponseType((200), Type = typeof(List<PersonVO>))]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(401)]
+        [Authorize("Bearer")]
+        public ActionResult GetByName([FromQuery] string nome, [FromQuery] string sobreNome)
+        {
+            return new OkObjectResult(_ipersonBuseness.FindAll());
+        }
+
         // GET api/values/5
         [HttpGet("{id}")]
         [ProducesResponseType((200), Type=typeof(PersonVO))]
